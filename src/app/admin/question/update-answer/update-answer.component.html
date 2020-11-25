@@ -1,0 +1,42 @@
+<div class="row">
+        <div id="accordion">
+                         
+                <h2>Answer</h2>
+
+                <form  #form="ngForm" (ngSubmit)="addanswer(form)">
+
+                                <label for="Name">Add a Name:
+
+                                        <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  />
+
+                                </label>
+                                <label for="quizsection">Select a category: 
+
+                                        </label>
+                                        <br>
+                                        <select  [(ngModel)]="questions_id"[ngModelOptions]="{standalone: true}" questioncategories_id>
+                                                <option value="0" disabled>Choose a category</option>
+                                                <option value={{questioncategory.id}} *ngFor="let questioncategory of questioncategories">{{questioncategory.name}}</option>
+                                        </select>
+                                        <br>
+                                        <label for="isCorrect">Select a category: 
+
+                                                </label>
+                                                <br>
+                                                <select  [(ngModel)]="isCorrect"[ngModelOptions]="{standalone: true}" >
+                                                        <option value="0" disabled>Choose a category</option>
+                                                        <option value="true">True</option>
+                                                        <option value="false">False</option>
+                                                </select>
+                                                <br>
+                                                                      
+<br>
+                                <br>                            
+                                <button type="submit"  class="btn btn-info">ADD</button> 
+                                <br>
+                                <br>
+
+                        </form>
+                
+                    </div>
+                    </div>

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+              <h1>EDIT USER</h1>
+              <p>This page can only be accessed by administrators.</p>
+              <div>USERS</div><div class="card" style="width: 18rem; float: left">
+                    <div class="card-body" >
+                            <form  #form="ngForm" (ngSubmit)="edituserForm(form)">
+                            <label for="name">Name:
+                                    <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"name/>
+                          </label>
+                          <label for="surname">Surname:
+                                          <input class="h-50 d-inline-block" [(ngModel)]="surname" [ngModelOptions]="{standalone: true}" surname/>
+                          </label>
+
+                            <label for="email">Email:
+                                            <input class="h-50 d-inline-block" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" email/>
+                            </label>
+                            <label for="username">Username:
+                                            <input class="h-50 d-inline-block" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" username/>
+                            </label>
+                            <label for="password">Password:
+                                    <input class="h-50 d-inline-block" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"  password />
+                    </label><br>
+                    <label for="usertypes_id">Role: 
+                        </label>
+                        <br> 
+                        <select  class="h-50 d-inline-block" [(ngModel)]="usertypes_id"[ngModelOptions]="{standalone: true}" >
+                                <option value="" disabled>Choose a Role</option>
+                                
+
+                                <option  [selected]="usertypes_id == role.id" *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
+                        </select><br> 
+                        <br>
+                            <label for="userstatus_id">Status:
+
+                            </label>
+                            <br>     <select  class="h-50 d-inline-block" [(ngModel)]="userstatus_id"[ngModelOptions]="{standalone: true}"  >
+                                    <option value="" disabled>Choose a Status</option>
+                                    <option   *ngFor="let status of statuses" [selected]="userstatus_id == status.id"  value={{status.id}}>{{status.name}}</option>
+                            </select><br> 
+                        <br> 
+                        
+                     <button type="submit"  class="btn btn-info">EDIT</button>  
+
+                    </form>
+
+             </div>
+            </div>
+            <div>
+                </div>
+            </div>
+            <div>

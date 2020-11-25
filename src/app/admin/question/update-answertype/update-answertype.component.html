@@ -1,0 +1,20 @@
+<form  #form="ngForm" (ngSubmit)="editanswertypeForm(form)">
+
+        <label for="Name">Add a Name:
+
+                <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  />
+
+        </label>
+        <label for="Code">Add a Code:
+
+                        <input class="h-50 d-inline-block" [(ngModel)]="code" [ngModelOptions]="{standalone: true}"  />
+
+                </label>
+                                      
+<br>
+        <br>                            
+        <button type="submit"  class="btn btn-info">EDIT</button> 
+        <br>
+        <br>
+
+</form>

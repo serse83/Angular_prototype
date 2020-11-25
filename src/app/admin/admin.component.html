@@ -1,0 +1,40 @@
+<section class="col-3" >
+<nav id="sidebar" class="sidenav">
+        <div class="sidebar-header">
+                <h3>ADMIN MENU</h3>
+            </div>
+            <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a class="nav-link" href="/admin/user" >User</a> 
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/admin/question" >Question</a> </li>
+                                <ul>
+                                    <li>
+                                        <a class="nav-link" href="/admin/question#quizsection" >Quizsection</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="/admin/question#question" >QUESTION</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="/admin/question#answertype " >Answertype</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="/admin/question#answer" >Answer</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="/admin/question#Quiz" >Quiz</a>
+                                    </li>
+                                </ul>
+                            
+                        </ul>
+                    </li>
+                </ul>
+</nav>
+</section>        <div class="col-9"><router-outlet></router-outlet>
+        </div>
+        
+

@@ -1,0 +1,19 @@
+.main {
+/*    margin-left: 160px; / Same as the width of the sidebar */
+    padding: 0px 10px;
+  }
+
+  .mainnav {    margin-left: -200px;
+  }
+
+  .logoplatform { max-width: 60px; }
+
+  .ml-auto .dropdown-menu {
+    left: auto !important;
+    right: 0px;
+  }  
+
+  @media screen and (max-width: 600px) {
+    .logoplatform { max-width: 80px; }
+  }
+  

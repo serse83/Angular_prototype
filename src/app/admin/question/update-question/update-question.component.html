@@ -1,0 +1,44 @@
+<div class="container">
+        <div class="row">
+          <div class="col-sm">
+                  <h1>EDIT QUESTION</h1>
+                  <p>This page can only be accessed by administrators.</p>
+                  <div>QUESTION</div><div class="card" style="width: 18rem; float: left">
+                        <div class="card-body" >
+                                <form  #form="ngForm" (ngSubmit)="editquestionForm(form)">
+
+                                        <label for="Name">Add a Name:
+        
+                                                <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  />
+        
+                                        </label>
+        <br>
+                                        <label for="questioncategories_id">Select a category: 
+        
+                                        </label>
+                                        <br>
+                                        <select  [(ngModel)]="questioncategories_id"[ngModelOptions]="{standalone: true}" questioncategories_id>
+                                                <option value="0" disabled>Choose a Quizsection</option>
+                                                <option value={{questioncategory.id}} *ngFor="let questioncategory of questioncategories">{{questioncategory.name}}</option>
+                                        </select>
+                                        <label for="answertypes_id">Select a category: 
+        
+                                            </label>
+                                        <br>
+                                        <select  [(ngModel)]="answertypes_id"[ngModelOptions]="{standalone: true}">
+                                                <option value="0" disabled>Choose a Answertype</option>
+                                                <option value={{answertype.id}} *ngFor="let answertype of answertypes">{{answertype.name}}</option>
+                                        </select>
+                                        <br>
+                                        <br>
+                            
+                         <button type="submit"  class="btn btn-info">EDIT</button>  
+    
+                        </form>
+    
+                 </div>
+                </div>
+                <div>
+                    </div>
+                </div>
+                <div>

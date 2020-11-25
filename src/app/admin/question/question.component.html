@@ -1,0 +1,390 @@
+<div>USERS</div>
+
+<div class="container main">
+
+        <div class="row">
+
+                <div class="card" style="width: 80%; float: left">
+
+                        <div class="card-body" >
+
+                        </div>
+
+                        <div class="row">
+
+                                <div class="card-body" >
+
+
+                                </div>
+                        </div>
+                        <div class="row">
+                                <!-- ADD A ANSWER -->
+                                <div class="card-body" >
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+
+<div class="container main" id="quizsection">
+            <div class="row">
+                    <div id="accordion">
+
+                            <h2>quizsection</h2>
+                            <h3>Add a section</h3>
+
+                            <form  #form="ngForm" (ngSubmit)="addquizsectionForm(form)">
+
+                                        <label  for="quizsection">
+
+                                                <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  name />
+
+                                        </label>
+
+                                        <button type="submit"  class="btn btn-info">ADD</button>  
+
+                                </form>
+
+                            <h3 class="mb-0">
+
+
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
+                                                Collapsible Group Item #1
+
+                                        </button>
+
+                                </h3>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+
+                                        <div class="card-body">
+                                                     <ul *ngFor="let quizsection of quizsections" style="float: left">
+                                                        <div class="card" style="float: left">
+                                                                <div class="card-body" >                                      
+                                                                        <p>QUIZ SECTION</p>   
+                                                                        <p>QUIZ SECTION: {{quizsection.name}}</p>
+                                                                        <button type="submit" (click)="editquizsection(quizsection.id,quizsection.name)" class="btn btn-info">EDIT</button>   
+                                                                        <button type="submit" (click)="deletequizcategory(quizsection.id)" class="btn btn-danger">DELETE</button>    
+                                                                </div>
+                                                         </div>
+                                                </ul>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+<div class="container main">
+        <div class="row">
+                        <h2 class="card-title"> ADD A QUESTION</h2>
+</div>
+</div>
+                        
+                        <div class="container main">
+                                        <div class="row">
+                                                        
+                        <form  #form="ngForm" (ngSubmit)="addquestion(form)">
+
+                                <label for="Name">Add a Name:
+
+                                        <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  />
+
+                                </label>
+<br>
+                                <label for="quizsection">Select a category: 
+
+                                </label>
+                                <br>
+                                <select  [(ngModel)]="questioncategories_id"[ngModelOptions]="{standalone: true}" questioncategories_id>
+                                        <option value="0" disabled>Choose a category</option>
+                                        <option value={{quizsection.id}} *ngFor="let quizsection of quizsections">{{quizsection.name}}</option>
+                                </select>
+                                <br>
+                                <select  [(ngModel)]="answertypes_id"[ngModelOptions]="{standalone: true}">
+                                        <option value="0" disabled>Choose a category</option>
+                                        <option value={{answertype.id}} *ngFor="let answertype of answertypes">{{answertype.name}}</option>
+                                </select>
+                                <br>                            
+                                <button type="submit"  class="btn btn-info">ADD</button> 
+                                <br>
+                                <br>
+
+                        </form>
+ 
+                        <br><br>               </div>
+</div>
+<br>
+<div class="container main">
+                <div class="row">
+                                <h2 class="card-title"> ADD A QUESTION</h2>
+        </div>
+        </div>
+<div class="container main" id="question">
+                <div class="row">
+                                <br><br> 
+                        <div id="accordion">
+                                                                           
+        
+                                <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                Collapsible Group Item #1
+                                        </button>
+                                </h5>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+ 
+                                                <ul *ngFor="let question of questions" style="float: left">
+                                                                <div class="card" style="float: left">
+
+                                                        <div class="card-body">                
+
+                                                        <p>Question id {{question.id}}</p>   
+                        
+                                                        <p>Question name {{question.name}}</p>
+                        
+                                                        <p>Question categories {{question.questioncategories_id}}</p>
+                        
+                                                        <p>Question answertype {{question.answertypes_id}}</p>
+                        
+                                                        <button type="submit" (click)="editquestion(question.id,question.name,question.questioncategories_id,question.answertypes_id)" class="btn btn-info">EDIT</button>  
+                                                        <button type="submit" (click)="deletequizcategory(quizsection.id)" class="btn btn-danger">DELETE</button>     
+                                                </div>
+                                        </div>
+
+                                                </ul>
+                
+                        </div>
+                </div>
+</div>
+</div>
+<div class="container main" id="answertype">
+        <div class="row">
+                
+                <div id="accordion">
+
+                        <h2>Answertype</h2>
+                        <form  #form="ngForm" (ngSubmit)="addanswertype(form)">
+
+                                        <label for="Name">Add a Name:
+        
+                                                <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  />
+        
+                                        </label>
+                                        <label for="Code">Add a Code:
+        
+                                                        <input class="h-50 d-inline-block" [(ngModel)]="code" [ngModelOptions]="{standalone: true}"  />
+                
+                                                </label>
+                                                                      
+        <br>
+                                        <br>                            
+                                        <button type="submit"  class="btn btn-info">ADD</button> 
+                                        <br>
+                                        <br>
+        
+                                </form>
+                                
+                        <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                            
+                                Collapsible Group Item #
+                        </button></h5>
+                        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+                                <ul *ngFor="let answertype of answertypes" style="float: left">
+                                        <div class="card" >
+                                                <div class="card-body" >
+                                                        
+                                                        <p>Answertype id: {{answertype.id}}</p>   
+                                                                                                
+                                                        <p>Answertype name: {{answertype.name}}</p>
+                                                        <p>Answertype code: {{answertype.code}}</p>
+               
+
+                                                                                                <button type="submit" (click)="editanswertype(answertype.id,answertype.name,answertype.code)" class="btn btn-info">EDIT</button>   
+                                                                                                <button type="submit" (click)="deleteanswertype(answertype.id)" class="btn btn-danger">DELETE</button>    
+               
+
+                                                                                        </div>
+               
+
+                                                                                </div>
+               
+
+                                                                        </ul>
+               
+
+                                                                </div>
+               
+
+                                                        </div>
+  
+
+                                                </div>
+
+
+        
+
+                              
+              
+<div class="container main" id="answer">
+
+        <div class="row">
+                <div id="accordion">
+                                 
+                        <h2>Answer</h2>
+
+                        <form  #form="ngForm" (ngSubmit)="addanswer(form)">
+
+                                        <label for="Name">Add a Name:
+        
+                                                <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  />
+        
+                                        </label>
+                                        <label for="quizsection">Choose a Question: 
+
+                                                </label>
+                                                <br>
+                                                <select  [(ngModel)]="questions_id"[ngModelOptions]="{standalone: true}" questions_id>
+                                                        <option value="0" disabled>Choose a Question</option>
+                                                        <option value={{question.id}} *ngFor="let question of questions">{{question.name}}</option>
+                                                </select>
+                                                <br>
+                                                <label for="isCorrect">Select a answer: 
+
+                                                        </label>
+                                                        <br>
+                                                        <select  [(ngModel)]="isCorrect"[ngModelOptions]="{standalone: true}" >
+                                                                <option value="0" disabled>Choose a category</option>
+                                                                <option value="true">True</option>
+                                                                <option value="false">False</option>
+                                                        </select>
+                                                        <br>
+                                                                              
+        <br>
+                                        <br>                            
+                                        <button type="submit"  class="btn btn-info">ADD</button> 
+                                        <br>
+                                        <br>
+        
+                                </form>
+                        
+                        <div>
+
+                        
+                                <h5 class="mb-0">
+
+                        
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+
+                                                                Collapsible Group Item #1
+                        
+                               
+                                
+                                                        </button>
+
+
+                                               
+                                </h5>
+
+                                                
+                                                
+                                <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
+                                
+                                
+                                        <ul *ngFor="let answer of answers" style="float: left">
+
+                                
+
+                                                
+                                                <div class="card" >
+
+                                
+                                                
+                                                        <div class="card-body" >
+
+                                
+                                                
+                                                                <p>Answer id: {{answer.id}}</p>   
+
+                                
+                                                
+                                                                <p>Answer name:{{answer.name}}</p>
+
+                                
+                                                
+                                                                <p>Answer questions_id:{{answer.questions_id}}</p>
+
+                                
+                                                
+                                                                <p>Answer {{answer.isCorrect}}</p>
+
+                                
+                                                
+                                                                <button type="submit" (click)="editanswer(answer.id,answer.name,answer.questions_id,answer.isCorrect)" class="btn btn-info">EDIT</button>
+                                                                <button type="submit" (click)="deletequizcategory(quizsection.id)" class="btn btn-danger">DELETE</button>    
+
+                                
+                                                
+                                                        </div>
+
+                                
+                                                
+                                                </div>
+
+                              
+                                                
+                                        </ul>
+                                        
+                                </div>
+                                
+                        </div>
+                                        
+                        
+                </div>
+                
+        </div>
+        
+</div>
+<div class="container main" id="Quiz">
+
+        <div class="row">
+
+                <div id="accordion">
+                                <h2>Quiz</h2>
+                                
+                                <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+        
+                                        Collapsible Group Item #
+                                </button></h5>
+                                <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordion">
+        
+                                <ul *ngFor="let quiz of quizs" style="float: left">
+
+                                        <div class="card" >
+
+                                                <div class="card-body" >
+
+                                                        <p>Quiz name {{quiz.name}}</p>  
+
+                                                        <p>Quiz section{{quiz.quizsections_id}}</p>   
+
+                                                        <p>Quiz duration{{quiz.duration }}</p>
+
+                                                        <p *ngFor="let question of quiz.questions" > Question id{{question.id}}<br>Question name {{question.name}} </p>
+
+                                                        <button type="submit" (click)="editUser(quizsection.id)" class="btn btn-info">EDIT</button>
+                                                        <button type="submit" (click)="deletequizcategory(quizsection.id)" class="btn btn-danger">DELETE</button>       
+                                                                
+                                                </div>
+                                                
+                                        </div>
+                                        
+                                </ul>
+                                
+                        </div>
+                        
+                </div>
+                
+        </div>
+        
+</div>

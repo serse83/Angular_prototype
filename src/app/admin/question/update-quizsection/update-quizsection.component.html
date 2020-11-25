@@ -1,0 +1,21 @@
+<div class="container">
+        <div class="row">
+                <div id="accordion">
+
+                        <h2>quizsection</h2>
+                        <h3>Add a section</h3>
+
+                        <form  #form="ngForm" (ngSubmit)="editquizsectionForm(form)">
+
+                                    <label  for="quizsection">
+
+                                            <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  name />
+
+                                    </label>
+
+                                    <button type="submit"  class="btn btn-info">EDIT</button>  
+
+                            </form>
+                        </div>
+                    </div>
+                </div>

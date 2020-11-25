@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+<div>
+  <div>
+    <div class="headervideo">
+      <div class="overlay"></div>
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+      </video>
+      <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+          <div class="w-100 text-white">
+            
+    <div *ngIf="islogged; then logout else login"></div>
+
+          
+    <ng-template #login >
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" class="blocktext">
+      <div>
+       <label for="username"> Username </label>
+       <input type="username" id="username"
+       ngModel
+       name="username"
+       required
+       username 
+       class="form-control"
+       >
+      
+
+
+      </div>
+      {{error}}
+      <div>
+       <label for="password"> Password </label>
+       <input type="password" id="password"
+       ngModel
+       name="password"
+       required
+       password 
+       class="form-control"
+       >
+  
+          </div>
+
+          <div>
+            
+       <button  type="button " class="btn btn-info bottonlogin ">Login
+       </button>
+             
+
+
+      </div>
+    </form>
+  </ng-template>
+  <ng-template #logout>
+    
+      <p>welcome your role is: <strong>{{role}}</strong>.</p>
+      <button (click)='onLogout()' type="button" class="btn btn-dark">Log Out
+        </button>
+              
+    </ng-template>
+  </div>
+</div>  
+
+                </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>  
+</div>  

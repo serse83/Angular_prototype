@@ -1,0 +1,139 @@
+
+<div class="container main">
+        <div class="row">
+                <div class="col-sm-4">
+                        <h1>Admin</h1>
+                        <p>This page can only be accessed by administrators.</p>
+                        <div class="card" style="width: 18rem; float: left">
+                                <div class="card-body" >
+                                        <form  #form="ngForm" (ngSubmit)="adduserForm(form)">
+                                                <label for="password">Password:
+                                                        <input class="h-50 d-inline-block" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"  password />
+                                                </label>
+                                                <label for="email">Email:
+                                                        <input class="h-50 d-inline-block" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" email/>
+                                                </label>
+                                                <label for="username">Username:
+                                                        <input class="h-50 d-inline-block" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" username/>
+                                                </label>
+                                                <label for="name">Name:
+                                                        <input class="h-50 d-inline-block" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"name/>
+                                                </label>
+                                                <label for="surname">Surname:
+                                                        <input class="h-50 d-inline-block" [(ngModel)]="surname" [ngModelOptions]="{standalone: true}"/>
+                                                </label>
+                                                <label for="usertypes_id">Role:                                                         
+                                                </label>
+                                                <br> 
+                                                <select  class="h-50 d-inline-block" [(ngModel)]="usertypes_id"[ngModelOptions]="{standalone: true}">
+                                                        <option value="0" disabled>Choose a Role</option>
+                                                        <option value={{role.id}} *ngFor="let role of roles">{{role.name}}</option>
+                                                </select><br> 
+                                                <label for="userstatus_id">Status:
+
+                                                </label><br>
+                                                <select  class="h-50 d-inline-block" [(ngModel)]="userstatus_id"[ngModelOptions]="{standalone: true}">
+                                                        <option value="0" disabled>Choose a Status</option>
+                                                        <option value={{status.id}} *ngFor="let status of statuses">{{status.name}}</option><br>                            </select><br> 
+                                                        <button type="submit"  class="btn btn-info">ADD</button>  
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+
+                        <div class="col-sm-8">
+                                <form>
+                                        <div class="col-sm-2 float-right">
+                                                <label for="usertypes_id">Role: 
+
+                                                </label>
+                                                <br> 
+                                                <select style="width: 90%"  class="h-50 d-inline-block" [(ngModel)]="selectedrole"[ngModelOptions]="{standalone: true}" >
+                                                        <option value="0" disabled>Choose a Role</option>
+                                                        <option   value={{role.name}} *ngFor="let role of roles"  >{{role.name}}</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-sm-2 float-right">
+                                                <label for="userstatus_id">Status:
+        
+                                                </label>
+                                                <br>     
+                                                <select style="width: 90%" class="h-50 d-inline-block" [(ngModel)]="selectedstatus"[ngModelOptions]="{standalone: true}" >
+                                                        <option value="0" disabled>Choose a Status</option>
+                                                        <option value={{status.name}} *ngFor="let status of statuses">{{status.name}}</option>
+                                                </select><br> 
+                                                <br>
+                                        </div>
+                                        <div class="col-sm-2 float-right">
+                                                        <label for="username">Username:
+        
+                                                                </label>
+                                                                        <div >
+                                                                          <input style="width: 90%" [(ngModel)]="usernameSearch" placeholder="username" class="filter-input" [ngModelOptions]="{standalone: true}"  >
+                                                                          <span class="filter-clear" *ngIf="usernameSearch.length>0" (click)="clearusername()">X</span>
+                                                                        </div>
+                                                                        <div class="clear-selection" title="Click to Clear Selections" (click)="clearemail()" *ngIf="selected_count">Clear Selection</div>
+                                                                     
+                                             
+                                        </div>
+
+                                        <div class="col-sm-2 float-right">
+                                                        <label for="username">email:
+        
+                                                                </label>
+                                                                        <div >
+                                                                          <input style="width: 90%" [(ngModel)]="emailSearch" placeholder="email" class="filter-input" [ngModelOptions]="{standalone: true}"  >
+                                                                          <span class="filter-clear" *ngIf="emailSearch.length>0" (click)="clearemail()">X</span>
+                                                                        </div>
+                                                                        <div class="clear-selection" title="Click to Clear Selections" (click)="clearusername()" *ngIf="selected_count">Clear Selection</div>
+                                                                     
+                                             
+                                        </div>
+                                        <div class="col-sm-2 float-right">
+                                                        <label for="name">name:
+        
+                                                                </label>
+                                                                        <div class="filter-wrap"  >
+                                                                          <input style="width: 90%" [(ngModel)]="nameSearch" placeholder="name" class="filter-input" [ngModelOptions]="{standalone: true}">
+                                                                          <span class="filter-clear" *ngIf="nameSearch.length>0" (click)="clearname()">X</span>
+                                                                        </div>
+                                                                        <div class="clear-selection" title="Click to Clear Selections" (click)="clearname()" *ngIf="selected_count">Clear Selection</div>
+                                                                     
+                                             
+                                        </div>
+                                </form>
+
+                    <ul *ngFor="let user of users | filter : nameSearch | filter : usernameSearch | filter: emailSearch" style="float: left list-group-item ">
+                                <div *ngIf= "(selectedstatus == user.userstatus || selectedstatus == 0) && (selectedrole == user.usertypes || selectedrole == 0)" class="float-left">
+                                           
+                                       
+                                                        
+                                                <div class="col-sm-6">
+
+                                                            
+                                                        <div class="card" style="width: 18rem;">
+                                                                <div class="card-body">
+                                                                          <li><strong>Id: </strong> {{user.id}}</li>
+                                                                                <li ><strong>Username:</strong> {{user.username}} </li>
+                                                                                <li ><strong>Email:</strong> {{user.email}} </li>
+                                                                                <li ><strong>Name:</strong>{{user.name}} </li>
+                                                                                <li ><strong>Surname</strong>{{user.surname}} </li>
+                                                                                <li ><strong>Last Login</strong>{{user.createdAt}} </li>
+                                                                                <li ><strong>Last Update</strong>{{user.createdAt}} </li>
+                                                                                <li  ><strong>Role: </strong>{{user.usertypes}} </li>
+                                                                                <li ><strong>Status </strong>{{user.userstatus}} </li>
+                                                                                <button type="submit" (click)="editUser(user.id,user.username,user.email,user.name, user.surname,user.userstatus,user.usertypes )" class="btn btn-info">EDIT</button>    
+                                                                                                                                                                        </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <ng-template #notShow style="width: 0px">
+                                      
+                                                         </ng-template>
+                                        
+                                
+
+                        </ul>
+                </div>
+        </div>
+</div>
